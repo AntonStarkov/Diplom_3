@@ -10,10 +10,11 @@ import java.time.Duration;
 
 public class AuthPage {
     private final WebDriver driver;
-    private static final By AUTH_EMAIL_FIELD = By.xpath("//*[@id=\"root\"]/div/main/div/form/fieldset[1]/div/div/input");
-    private static final By AUTH_PASSWORD_FIELD = By.xpath("//*[@id=\"root\"]/div/main/div/form/fieldset[2]/div/div/input");
-    private static final By AUTH_BUTTON = By.xpath("/html/body/div/div/main/div/form/button[text()='Войти']");
-    private static final By AUTH_PAGE_PERSONAL_ACCOUNT_BUTTON = By.xpath("//*[@id=\"root\"]/div/header/nav/a/p[text()='Личный Кабинет']");
+    private static final By AUTH_EMAIL_FIELD = By.xpath("//*/div/div/input[@name='name']");
+    private static final By AUTH_PASSWORD_FIELD = By.xpath("//*/div/div/input[@name='Пароль']");
+    private static final By AUTH_BUTTON = By.xpath("//*/form/button[text()='Войти']");
+    private static final By AUTH_PAGE_PERSONAL_ACCOUNT_BUTTON = By.xpath("//*/nav/a/p[text()='Личный Кабинет']");
+    private static final String MAIN_PAGE_REDIRECTION = "https://stellarburgers.nomoreparties.site/";
     private static final String AUTH_PAGE = "https://stellarburgers.nomoreparties.site/login";
     public AuthPage(WebDriver driver){
         this.driver = driver;
@@ -33,6 +34,10 @@ public class AuthPage {
     @Step("Waiting for redirection to authorization page")
     public void getRedirectionToLoginPage(){
         new WebDriverWait(driver, Duration.ofSeconds(8)).until(ExpectedConditions.urlMatches(AUTH_PAGE));
+    }
+    @Step("Waiting for redirection to main page")
+    public void waitRedirectionToMainPage(){
+        new WebDriverWait(driver, Duration.ofSeconds(8)).until(ExpectedConditions.urlToBe(MAIN_PAGE_REDIRECTION));
     }
     @Step("Click to \"Personal account\" button on the authorization page")
     public void personalAccountButtonClick(){

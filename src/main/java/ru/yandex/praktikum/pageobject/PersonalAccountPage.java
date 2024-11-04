@@ -10,9 +10,9 @@ import java.time.Duration;
 
 public class PersonalAccountPage {
     private final WebDriver driver;
-    private static final By EXIT_BUTTON = By.xpath("//*[@id=\"root\"]/div/main/div/nav/ul/li[3]/button[text()='Выход']");
-    private static final By LOGO_BUTTON = By.xpath("//*[@id=\"root\"]/div/header/nav/div");
-    private static final By CONSTRUCTOR_BUTTON = By.xpath("//*[@id=\"root\"]/div/header/nav/ul/li[1]/a/p[text()='Конструктор']");
+    private static final By EXIT_BUTTON = By.xpath("//*/li/button[text()='Выход']");
+    private static final By LOGO_BUTTON = By.xpath("//*/nav/div[@class='AppHeader_header__logo__2D0X2']");
+    private static final By CONSTRUCTOR_BUTTON = By.xpath("//*/a/p[text()='Конструктор']");
     private static final String MAIN_PAGE = "https://stellarburgers.nomoreparties.site";
     public PersonalAccountPage(WebDriver driver){
         this.driver = driver;

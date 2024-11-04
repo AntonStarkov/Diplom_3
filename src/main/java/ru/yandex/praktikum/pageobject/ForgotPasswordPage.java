@@ -7,7 +7,7 @@ import org.openqa.selenium.WebDriver;
 public class ForgotPasswordPage {
     private final WebDriver driver;
     private static final String FORGOT_PASSWORD_PAGE = "https://stellarburgers.nomoreparties.site/forgot-password";
-    private static final By AUTH_BUTTON = By.xpath("//*[@id=\"root\"]/div/main/div/div/p/a[text()='Войти']");
+    private static final By AUTH_BUTTON = By.xpath("//*/p/a[@class='Auth_link__1fOlj']");
     public ForgotPasswordPage(WebDriver driver){
         this.driver = driver;
     }

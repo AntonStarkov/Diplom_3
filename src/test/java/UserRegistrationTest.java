@@ -1,13 +1,14 @@
+import io.qameta.allure.Description;
+import io.qameta.allure.junit4.DisplayName;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.TestName;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import ru.yandex.praktikum.StellarBurgerAPIService;
-import ru.yandex.praktikum.pageobject.AuthPage;
 import ru.yandex.praktikum.pageobject.RegistrationPage;
+import ru.yandex.praktikum.pojo.loginuser.LoginUserDeserialization;
 
 
 public class UserRegistrationTest {
@@ -21,6 +22,8 @@ public class UserRegistrationTest {
         registrationPage = new RegistrationPage(driver);
     }
     @Test
+    @DisplayName("Registration user")
+    @Description("Test for registration user with correct data")
     public void registrationUser() {
         registrationPage.openPage();
         registrationPage.fillingRegistrationForm("ninja", "ninja@yandex.ru", "ninja123");
@@ -28,6 +31,8 @@ public class UserRegistrationTest {
         registrationPage.getRedirectionToLoginPage();
     }
     @Test
+    @DisplayName("Registration user with incorrect password")
+    @Description("Test for registration user with incorrect password less then 6 symbols")
     public void registrationUserWithIncorrectPassword() {
         registrationPage.openPage();
         registrationPage.fillingRegistrationForm("ninja", "ninja@yandex.ru", "ajnin");
@@ -35,16 +40,11 @@ public class UserRegistrationTest {
         registrationPage.getIncorrectPasswordError();
     }
     @After
-    public void closeDriverSession() throws InterruptedException {
+    public void closeDriverSession() {
         try {
-            AuthPage authPage = new AuthPage(driver);
-            authPage.openPage();
-            authPage.fillingAuthForm("ninja@yandex.ru", "ninja123");
-            authPage.authButtonClick();
-            Thread.sleep(1000);
-            new StellarBurgerAPIService().deleteUserResponse(((JavascriptExecutor) driver)
-                    .executeScript(String.format("return window.localStorage.getItem('accessToken');")).toString());
-        } catch (NullPointerException e){
+            StellarBurgerAPIService stellarBurgerAPIService = new StellarBurgerAPIService();
+            stellarBurgerAPIService.deleteUserResponse(stellarBurgerAPIService.loginUserResponse().as(LoginUserDeserialization.class).getAccessToken());
+        } catch (RuntimeException r){
             System.out.println("User not created in" + " " + testName.getMethodName() + " method");
         }
         driver.quit();

@@ -10,12 +10,12 @@ import java.time.Duration;
 
 public class RegistrationPage {
     private final WebDriver driver;
-    private static final By REGISTRATION_NAME_FIELD = By.xpath("//*/fieldset/div/div/label[text()='Имя']/parent::div/input");
-    private static final By REGISTRATION_EMAIL_FIELD = By.xpath("//*/fieldset/div/div/label[text()='Email']/parent::div/input");
-    private static final By REGISTRATION_PASSWORD_FIELD = By.xpath("//*/fieldset/div/div/label[text()='Пароль']/parent::div/input");
-    private static final By REGISTRATION_BUTTON = By.xpath("//*[@id=\"root\"]/div/main/div/form/button");
-    private static final By INCORRECT_PASSWORD_ERROR_TEXT = By.xpath("//*[@id=\"root\"]/div/main/div/form/fieldset[3]/div/p");
-    private static final By AUTH_BUTTON = By.xpath("//*[@id=\"root\"]/div/main/div/div/p/a[text()='Войти']");
+    private static final By REGISTRATION_NAME_FIELD = By.xpath("//*/label[text()='Имя']/parent::div/input");
+    private static final By REGISTRATION_EMAIL_FIELD = By.xpath("//*/label[text()='Email']/parent::div/input");
+    private static final By REGISTRATION_PASSWORD_FIELD = By.xpath("//*/label[text()='Пароль']/parent::div/input");
+    private static final By REGISTRATION_BUTTON = By.xpath("//*/form/button[text()='Зарегистрироваться']");
+    private static final By INCORRECT_PASSWORD_ERROR_TEXT = By.xpath("//*/div/p[text()='Некорректный пароль']");
+    private static final By AUTH_BUTTON = By.xpath("//*/div/p/a[text()='Войти']");
     private static final String REGISTRATION_PAGE_URL = "https://stellarburgers.nomoreparties.site/register";
     private static final String REDIRECT_TO_LOGIN_PAGE_URL = "https://stellarburgers.nomoreparties.site/login";
     public RegistrationPage(WebDriver driver){

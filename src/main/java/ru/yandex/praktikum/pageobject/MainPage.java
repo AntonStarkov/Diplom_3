@@ -10,14 +10,14 @@ import java.time.Duration;
 public class MainPage {
     private final WebDriver driver;
     private static final String MAIN_PAGE = "https://stellarburgers.nomoreparties.site";
-    private static final By MAIN_PAGE_AUTH_BUTTON = By.xpath("//*[@id=\"root\"]/div/main/section[2]/div/button[text()='Войти в аккаунт']");
-    private static final By MAIN_PAGE_PERSONAL_ACCOUNT_BUTTON = By.xpath("//*[@id=\"root\"]/div/header/nav/a/p[text()='Личный Кабинет']");
-    private static final By MAIN_PAGE_BUNS_BUTTON = By.xpath("//*[@id=\"root\"]/div/main/section[1]/div[1]/div/span[text()='Булки']/parent::div");
-    private static final By MAIN_PAGE_SAUCES_BUTTON = By.xpath("//*[@id=\"root\"]/div/main/section[1]/div[1]/div/span[text()='Соусы']/parent::div");
-    private static final By MAIN_PAGE_FILLINGS_BUTTON = By.xpath("//*[@id=\"root\"]/div/main/section[1]/div[1]/div/span[text()='Начинки']/parent::div");
-    private static final By SPICY_X_SAUCE = By.xpath("//*[@id=\"root\"]/div/main/section[1]/div[2]/ul[2]/a[@href=\"/ingredient/61c0c5a71d1f82001bdaaa72\"]");
-    private static final By FLUORESCENT_BUN = By.xpath("//*[@id=\"root\"]/div/main/section[1]/div[2]/ul[1]/a[@href=\"/ingredient/61c0c5a71d1f82001bdaaa6d\"]");
-    private static final By MOLLUSKS_MEAT = By.xpath("//*[@id=\"root\"]/div/main/section[1]/div[2]/ul[3]/a[@href=\"/ingredient/61c0c5a71d1f82001bdaaa6f\"]");
+    private static final By MAIN_PAGE_AUTH_BUTTON = By.xpath("//*/div/button[text()='Войти в аккаунт']");
+    private static final By MAIN_PAGE_PERSONAL_ACCOUNT_BUTTON = By.xpath("//*/a/p[text()='Личный Кабинет']");
+    private static final By MAIN_PAGE_BUNS_BUTTON = By.xpath("//*/div/span[text()='Булки']/parent::div");
+    private static final By MAIN_PAGE_SAUCES_BUTTON = By.xpath("//*/div/span[text()='Соусы']/parent::div");
+    private static final By MAIN_PAGE_FILLINGS_BUTTON = By.xpath("//*/div/span[text()='Начинки']/parent::div");
+    private static final By SPICY_X_SAUCE = By.xpath("//*/ul[2]/a[@href='/ingredient/61c0c5a71d1f82001bdaaa72']");
+    private static final By FLUORESCENT_BUN = By.xpath("//*/ul[1]/a[@href='/ingredient/61c0c5a71d1f82001bdaaa6d']");
+    private static final By MOLLUSKS_MEAT = By.xpath("//*/ul[3]/a[@href='/ingredient/61c0c5a71d1f82001bdaaa6f']");
     public MainPage(WebDriver driver){
         this.driver = driver;
     }
